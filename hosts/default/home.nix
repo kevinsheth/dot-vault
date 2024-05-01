@@ -1,7 +1,15 @@
-
-{ secrets, config, pkgs, ... }:
 {
-  nixpkgs = { config = { allowUnfree = true; allowUnfreePredicate = (_: true); };};
+  secrets,
+  config,
+  pkgs,
+  ...
+}: {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "kevins";
@@ -19,7 +27,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    
     # utils
     bat
     jq
@@ -39,9 +46,10 @@
     gnumake
     codeium
     _1password
-    _1password-gui    
+    _1password-gui
     git-crypt
     lf
+
     # langs
 
     python3
@@ -51,6 +59,17 @@
     rustup
     typescript
     kotlin
+
+    # lsps
+
+    nil
+    sumneko-lua-language-server
+
+    # formatters and linters
+    alejandra
+    deadnix
+    stylua
+    lua52Packages.luacheck
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -69,7 +88,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -103,60 +121,70 @@
     SHELL = "/etc/profiles/per-user/kevins/bin/zsh";
   };
 
-  
   programs = {
     home-manager.enable = true;
-
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;
 
-    zsh = {enable = true;
-	shellAliases = {
+    zsh = {
+      enable = true;
+      shellAliases = {
         cd = "z";
         bat = "cat";
         nvim = "lvim";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         rbd = "sudo nixos-rebuild switch --flake ~/configuration#default";
-	};
-       envExtra = ''
+      };
+      envExtra = ''
         export PATH=$PATH:$HOME/.local/bin
       '';
-
-    };
-		
-	git = {
-	      enable = true;
-	      delta.enable = true;
-	      delta.options = {
-		line-numbers = true;
-		side-by-side = true;
-		navigate = true;
-	      };
-	      userEmail = "kevinsheth25@gmail.com";
-	      userName = "Kevin Sheth";
-	      extraConfig = {
-		url = {
-		  "https://oauth2:${secrets.github.oauth_token}@github.com" = {
-		    insteadOf = "https://github.com";
-		  };
-		  #   "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
-		  #     insteadOf = "https://gitlab.com";
-		  #   };
-		};
-		push = {
-		  default = "current";
-		  autoSetupRemote = true;
-		};
-		merge = {
-		  conflictstyle = "diff3";
-		};
-		diff = {
-		  colorMoved = "default";
-		};
-	      };
-	    };
-
     };
 
+    starship.enable = true;
+    starship.settings = {
+      aws.disabled = true;
+      gcloud.disabled = true;
+      kubernetes.disabled = false;
+      git_branch.style = "242";
+      directory.style = "blue";
+      directory.truncate_to_repo = false;
+      directory.truncation_length = 8;
+      python.disabled = true;
+      ruby.disabled = true;
+      hostname.ssh_only = false;
+      hostname.style = "bold green";
+    };
 
+    git = {
+      enable = true;
+      delta.enable = true;
+      delta.options = {
+        line-numbers = true;
+        side-by-side = true;
+        navigate = true;
+      };
+      userEmail = "kevinsheth25@gmail.com";
+      userName = "Kevin Sheth";
+      extraConfig = {
+        url = {
+          "https://oauth2:${secrets.github.oauth_token}@github.com" = {
+            insteadOf = "https://github.com";
+          };
+          #   "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
+          #     insteadOf = "https://gitlab.com";
+          #   };
+        };
+        push = {
+          default = "current";
+          autoSetupRemote = true;
+        };
+        merge = {
+          conflictstyle = "diff3";
+        };
+        diff = {
+          colorMoved = "default";
+        };
+      };
+    };
+  };
 }

@@ -45,6 +45,8 @@ lvim.lsp.automatic_servers_installation = false
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust-analyzer" })
 
+lvim.use_icons = false
+
 -- FORMATTING --
 
 local formatters = require("lvim.lsp.null-ls.formatters")
