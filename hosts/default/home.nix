@@ -2,9 +2,11 @@
   secrets,
   config,
   pkgs,
+  inputs,
   ...
 }: {
   nixpkgs = {
+    overlays = [inputs.nur.overlay];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
@@ -92,6 +94,22 @@
 
   programs = {
     home-manager.enable = true;
+
+    firefox = {
+      enable = true;
+
+      profiles.kevin = {
+        id = 0;
+        name = "kevin";
+        isDefault = true;
+
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          onepassword-password-manager
+        ];
+      };
+    };
+
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;
 
