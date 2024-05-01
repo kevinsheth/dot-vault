@@ -5,7 +5,11 @@
   inputs,
   ...
 }: {
-  imports = [../../modules/languages/nix/nix.nix ../../modules/languages/kotlin/kotlin.nix];
+  imports = [
+    ../../modules/languages/nix/nix.nix
+    ../../modules/languages/kotlin/kotlin.nix
+    ../../modules/apps/firefox.nix
+  ];
 
   nixpkgs = {
     overlays = [inputs.nur.overlay];
@@ -45,10 +49,8 @@
     fd
     gnumake
     codeium
-    _1password
     _1password-gui
     git-crypt
-    lf
 
     # langs
 
@@ -89,21 +91,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    firefox = {
-      enable = true;
-
-      profiles.kevin = {
-        id = 0;
-        name = "kevin";
-        isDefault = true;
-
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          onepassword-password-manager
-        ];
-      };
-    };
 
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;
