@@ -5,6 +5,8 @@
   inputs,
   ...
 }: {
+  imports = [../../modules/languages/nix/nix.nix];
+
   nixpkgs = {
     overlays = [inputs.nur.overlay];
     config = {
@@ -63,8 +65,6 @@
     nil
 
     # formatters and linters
-    alejandra
-    deadnix
     stylua
     lua52Packages.luacheck
   ];
