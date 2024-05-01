@@ -70,6 +70,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/lvim/config.lua".source = ../../dotfiles/.config/lvim/config.lua;
+    ".ideavimrc".source = ../../dotfiles/.ideavimrc;
     ".codeium/config.json".text = "{\"apiKey\":\"${secrets.codeium.api_key}\"}";
   };
 
