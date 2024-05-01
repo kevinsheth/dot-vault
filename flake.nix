@@ -7,12 +7,10 @@
 	url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
-     home-manager = {
+    home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
-     };
+    };
 
   };
 
@@ -20,9 +18,10 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
       in {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs secrets;};
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default

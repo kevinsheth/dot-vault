@@ -1,8 +1,6 @@
 
-{ config, pkgs, ... }:
-
+{ secrets, config, pkgs, ... }:
 {
-
   nixpkgs = { config = { allowUnfree = true; allowUnfreePredicate = (_: true); };};
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -43,6 +41,7 @@
     _1password
     _1password-gui    
     git-crypt
+    lf
     # langs
 
     python3
@@ -80,7 +79,7 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
     ".config/lvim.config.lua".source = ../../dotfiles/.config/lvim/config.lua;
-
+    ".codeium/config.json".text = "{\"apiKey\":\"${secrets.codeium.api_key}\"}";
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
