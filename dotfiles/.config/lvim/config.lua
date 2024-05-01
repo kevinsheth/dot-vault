@@ -32,7 +32,7 @@ lvim.plugins = {
 	},
 	{
 		"Exafunction/codeium.vim",
-		enabled = false,
+		enabled = true,
 		config = function() end,
 		lazy = false,
 		event = "VeryLazy",

@@ -78,7 +78,7 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/lvim.config.lua".source = ../../dotfiles/.config/lvim/config.lua;
+    ".config/lvim/config.lua".source = ../../dotfiles/.config/lvim/config.lua;
     ".codeium/config.json".text = "{\"apiKey\":\"${secrets.codeium.api_key}\"}";
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -109,6 +109,39 @@
 
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;
+
+		
+	git = {
+	      enable = true;
+	      delta.enable = true;
+	      delta.options = {
+		line-numbers = true;
+		side-by-side = true;
+		navigate = true;
+	      };
+	      userEmail = "kevinsheth25@gmail.com";
+	      userName = "Kevin Sheth";
+	      extraConfig = {
+		url = {
+		  "https://oauth2:${secrets.github.oauth_token}@github.com" = {
+		    insteadOf = "https://github.com";
+		  };
+		  #   "https://oauth2:${secrets.gitlab_token}@gitlab.com" = {
+		  #     insteadOf = "https://gitlab.com";
+		  #   };
+		};
+		push = {
+		  default = "current";
+		  autoSetupRemote = true;
+		};
+		merge = {
+		  conflictstyle = "diff3";
+		};
+		diff = {
+		  colorMoved = "default";
+		};
+	      };
+	    };
 
     };
 }
