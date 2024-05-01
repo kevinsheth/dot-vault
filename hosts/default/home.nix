@@ -5,7 +5,7 @@
   inputs,
   ...
 }: {
-  imports = [../../modules/languages/nix/nix.nix];
+  imports = [../../modules/languages/nix/nix.nix ../../modules/languages/kotlin/kotlin.nix];
 
   nixpkgs = {
     overlays = [inputs.nur.overlay];
@@ -58,11 +58,6 @@
     go
     rustup
     typescript
-    kotlin
-
-    # lsps
-
-    nil
 
     # formatters and linters
     stylua
