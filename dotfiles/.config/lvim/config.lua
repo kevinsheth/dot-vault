@@ -43,7 +43,7 @@ lvim.builtin.treesitter.highlight.enable = true
 
 lvim.lsp.automatic_servers_installation = false
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust-analyzer" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust-analyzer", "lua-language-server" })
 
 lvim.use_icons = false
 
@@ -62,7 +62,11 @@ lvim.format_on_save.enabled = true
 --- LINTING ---
 
 local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({ { command = "flake8", filetypes = { "python" } }, { command = "deadnix", filetypes = { "nix" } } })
+linters.setup({
+	{ command = "flake8", filetypes = { "python" } },
+	{ command = "deadnix", filetypes = { "nix" } },
+	{ command = "luacheck", filetypes = { "lua" } },
+})
 
 --- LSP ---
 local lspconfig = require("lspconfig")
