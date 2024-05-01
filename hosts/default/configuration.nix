@@ -15,6 +15,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ZSH
+
+  programs.zsh.enable = true;
+
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -83,11 +88,13 @@
   users.users.kevins = {
     isNormalUser = true;
     description = "Kevin Sheth";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       vim
       neovim
       firefox
+      zsh
     ];
   };
   

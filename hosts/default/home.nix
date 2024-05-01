@@ -99,7 +99,7 @@
   #  /etc/profiles/per-user/kevins/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "lvim";
     SHELL = "/etc/profiles/per-user/kevins/bin/zsh";
   };
 
@@ -110,6 +110,19 @@
     zoxide.enable = true;
     zoxide.enableZshIntegration = true;
 
+    zsh = {enable = true;
+	shellAliases = {
+        cd = "z";
+        bat = "cat";
+        nvim = "lvim";
+        refresh = "source ${config.home.homeDirectory}/.zshrc";
+        rbd = "sudo nixos-rebuild switch --flake ~/configuration#default";
+	};
+       envExtra = ''
+        export PATH=$PATH:$HOME/.local/bin
+      '';
+
+    };
 		
 	git = {
 	      enable = true;
@@ -144,4 +157,6 @@
 	    };
 
     };
+
+
 }
