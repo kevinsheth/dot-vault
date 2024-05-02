@@ -51,7 +51,7 @@
     codeium
     _1password-gui
     git-crypt
-
+    warp-terminal
     # langs
 
     python3
@@ -64,6 +64,9 @@
     # formatters and linters
     stylua
     lua52Packages.luacheck
+
+    # fun
+    discord
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
