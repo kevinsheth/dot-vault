@@ -1,5 +1,6 @@
 {
-  plugins.treesitter = {
-    enable = true;
+  plugins = {
+    treesitter.enable = true;
+    ts-context-commentstring.enable = true;
   };
 }

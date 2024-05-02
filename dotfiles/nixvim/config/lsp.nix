@@ -1,15 +1,30 @@
 {
-  plugins.lsp = {
-    enable = true;
+  plugins = {
+    lsp-format.enable = true;
 
-    servers = {
-      lua-ls = {
-        enable = true;
-        settings.telemetry.enable = false;
+    lsp = {
+      enable = true;
+
+      servers = {
+        lua-ls = {
+          enable = true;
+          settings.telemetry.enable = false;
+        };
+
+        nil_ls = {
+          enable = true;
+        };
       };
+    };
 
-      nil_ls = {
-        enable = true;
+    none-ls = {
+      enable = true;
+      enableLspFormat = true;
+      sources = {
+        formatting = {
+          alejandra.enable = true;
+          stylua.enable = true;
+        };
       };
     };
   };

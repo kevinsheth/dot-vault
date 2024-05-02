@@ -1,5 +1,5 @@
 {
-  plugins.lsp-format = {
+  plugins.lualine = {
     enable = true;
   };
 }
