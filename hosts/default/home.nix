@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [
-    ../../modules/languages/nix/nix.nix
-    ../../modules/languages/kotlin/kotlin.nix
+    ../../modules/languages/nix.nix
+    ../../modules/languages/kotlin.nix
     ../../modules/apps/firefox.nix
   ];
 
