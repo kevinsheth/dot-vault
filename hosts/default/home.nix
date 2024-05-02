@@ -12,7 +12,7 @@
 
   # language modules
 
-  nix.enable = true;
+  _nix.enable = true;
   kotlin.enable = true;
   ocaml.enable = true;
 

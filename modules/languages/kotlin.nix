@@ -8,7 +8,7 @@
     kotlin.enable = lib.mkEnableOption "enables kotlin";
   };
 
-  config = lib.mkIf config.ocaml.enable {
+  config = lib.mkIf config.kotlin.enable {
     home.packages = with pkgs; [
       kotlin
       gradle

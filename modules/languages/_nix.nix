@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    nix.enable = lib.mkEnableOption "enables nix";
+    _nix.enable = lib.mkEnableOption "enables nix tooling";
   };
 
-  config = lib.mkIf config.ocaml.enable {
+  config = lib.mkIf config._nix.enable {
     home.packages = with pkgs; [
       alejandra
       deadnix
