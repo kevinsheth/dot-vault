@@ -80,7 +80,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/lvim/config.lua".source = ../../dotfiles/.config/lvim/config.lua;
     ".ideavimrc".source = ../../dotfiles/.ideavimrc;
     ".codeium/config.json".text = "{\"apiKey\":\"${secrets.codeium.api_key}\"}";
   };
@@ -140,7 +139,6 @@
       shellAliases = {
         cd = "z";
         bat = "cat";
-        nvim = "lvim";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         rbd = "sudo nixos-rebuild switch --flake ~/configuration#default";
       };

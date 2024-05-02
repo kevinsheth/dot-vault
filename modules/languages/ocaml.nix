@@ -10,7 +10,10 @@
 
   config = lib.mkIf config.ocaml.enable {
     home.packages = with pkgs; [
-      ocaml
+      opam
+      ocamlPackages.ocaml-lsp
     ];
+
+    programs.opam.enable = true;
   };
 }

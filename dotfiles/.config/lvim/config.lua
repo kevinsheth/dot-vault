@@ -20,16 +20,7 @@ lvim.keys.normal_mode["<leader>rr"] = ":RustRun<CR>"
 --- PLUGINS ---
 
 lvim.plugins = {
-	{ "Vigemus/iron.nvim" },
 	{ "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, cmd = "TroubleToggle" },
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
-	},
 	{
 		"Exafunction/codeium.vim",
 		enabled = true,
@@ -41,42 +32,7 @@ lvim.plugins = {
 
 lvim.builtin.treesitter.highlight.enable = true
 
-lvim.lsp.automatic_servers_installation = false
-
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust-analyzer", "lua-language-server" })
-
 lvim.use_icons = false
 
+lvim.lsp.automatic_servers_installation = false
 -- FORMATTING --
-
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({
-	{ name = "black", filetypes = { "python" } },
-	{ name = "stylua", filetypes = { "lua" } },
-	{ name = "alejandra", filetypes = { "nix" } },
-	{ name = "rustfmt", filetypes = { "rust" } },
-})
-
-lvim.format_on_save.enabled = true
-
---- LINTING ---
-
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({
-	{ command = "flake8", filetypes = { "python" } },
-	{ command = "deadnix", filetypes = { "nix" } },
-	{ command = "luacheck", filetypes = { "lua" } },
-})
-
---- LSP ---
-local lspconfig = require("lspconfig")
-
-lspconfig.rust_analyzer.setup({
-	settings = {
-		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
-			},
-		},
-	},
-})
