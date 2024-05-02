@@ -6,10 +6,15 @@
   ...
 }: {
   imports = [
-    ../../modules/languages/nix.nix
-    ../../modules/languages/kotlin.nix
+    ../../modules/languages.nix
     ../../modules/apps/firefox.nix
   ];
+
+  # language modules
+
+  nix.enable = true;
+  kotlin.enable = true;
+  ocaml.enable = true;
 
   nixpkgs = {
     overlays = [inputs.nur.overlay];
@@ -52,6 +57,8 @@
     _1password-gui
     git-crypt
     warp-terminal
+    bottom
+
     # langs
 
     python3
@@ -67,6 +74,7 @@
 
     # fun
     discord
+    obsidian
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

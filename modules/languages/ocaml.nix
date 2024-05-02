@@ -5,14 +5,12 @@
   ...
 }: {
   options = {
-    nix.enable = lib.mkEnableOption "enables nix";
+    ocaml.enable = lib.mkEnableOption "enables ocaml";
   };
 
   config = lib.mkIf config.ocaml.enable {
     home.packages = with pkgs; [
-      alejandra
-      deadnix
-      nil
+      ocaml
     ];
   };
 }
