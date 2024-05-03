@@ -53,7 +53,6 @@
     tree-sitter
     fd
     gnumake
-    codeium
     _1password-gui
     git-crypt
     warp-terminal
@@ -81,7 +80,6 @@
   # plain files is through 'home.file'.
   home.file = {
     ".ideavimrc".source = ../../dotfiles/.ideavimrc;
-    ".codeium/config.json".text = "{\"apiKey\":\"${secrets.codeium.api_key}\"}";
   };
 
   # Home Manager can also manage your environment variables through
@@ -137,7 +135,7 @@
       ];
 
       shellAliases = {
-        nixvim = "nix run ${config.home.homeDirectory}/nixvim";
+        nixvim = "${config.home.homeDirectory}/nixvim/result/bin/nvim";
         cd = "z";
         bat = "cat";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
