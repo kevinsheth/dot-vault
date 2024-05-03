@@ -137,6 +137,7 @@
       ];
 
       shellAliases = {
+        nvim = "nix run ${config.home.homeDirectory/configuration/dotfiles/nixvim}"
         cd = "z";
         bat = "cat";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
