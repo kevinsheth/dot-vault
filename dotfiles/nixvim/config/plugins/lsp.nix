@@ -15,9 +15,9 @@
           enable = true;
         };
 
-	ocamllsp = {
-	enable = true;
-	};
+        ocamllsp = {
+          enable = true;
+        };
       };
     };
 
@@ -28,6 +28,7 @@
         formatting = {
           alejandra.enable = true;
           stylua.enable = true;
+          ocamlformat.enable = true;
         };
       };
     };
