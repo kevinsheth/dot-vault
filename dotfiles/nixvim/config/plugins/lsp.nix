@@ -14,6 +14,10 @@
         nil_ls = {
           enable = true;
         };
+
+	ocamllsp = {
+	enable = true;
+	};
       };
     };
 
