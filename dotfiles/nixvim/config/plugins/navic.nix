@@ -1,5 +1,0 @@
-{
-  plugins.navic = {
-    enable = true;
-  };
-}
