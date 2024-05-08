@@ -94,7 +94,6 @@
   #  /etc/profiles/per-user/kevins/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "lvim";
     SHELL = "/etc/profiles/per-user/kevins/bin/zsh";
   };
 
