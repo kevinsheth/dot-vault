@@ -83,6 +83,12 @@
     #media-session.enable = true;
   };
 
+  # Bluetooth
+
+  # Enable Bluetooth support
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -91,7 +97,7 @@
     isNormalUser = true;
     description = "Kevin Sheth";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       vim
       neovim
