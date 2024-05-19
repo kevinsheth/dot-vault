@@ -56,6 +56,7 @@
     git-crypt
     warp-terminal
     bottom
+    gh
 
     # langs
 
