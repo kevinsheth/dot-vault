@@ -13,8 +13,7 @@
   # language modules
 
   _nix.enable = true;
-  kotlin.enable = true;
-  ocaml.enable = true;
+  js.enable = true;
 
   nixpkgs = {
     overlays = [inputs.nur.overlay];
