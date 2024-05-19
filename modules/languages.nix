@@ -7,5 +7,6 @@
     ./languages/_nix.nix
     ./languages/kotlin.nix
     ./languages/ocaml.nix
+    ./languages/js.nix
   ];
 }
