@@ -14,7 +14,7 @@
       gradle
       kotlin-language-server
       ktlint
-      jetbrains.idea-community
+      jetbrains.idea-ultimate
     ];
   };
 }
