@@ -14,6 +14,7 @@
 
   _nix.enable = true;
   js.enable = true;
+  kotlin.enable = true;
 
   nixpkgs = {
     overlays = [inputs.nur.overlay];
